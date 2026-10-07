@@ -1,46 +1,17 @@
-const cards_information = [
-    {
-        id: 1,
-        languages: {
-            spanish: { name: "casa", sound: "/location" },
-            english: { name: "house", sound: "/location" },
-            german: { name: "Haus", sound: "/location" },
-            french: { name: "maison", sound: "/location" }
-        },
-        image: "/location"
-    },
-    {
-        id: 2,
-        languages: {
-            spanish: { name: "perro", sound: "/location" },
-            english: { name: "dog", sound: "/location" },
-            german: { name: "Hund", sound: "/location" },
-            french: { name: "chien", sound: "/location" }
-        },
-        image: "/location"
-    },
-    {
-        id: 3,
-        languages: {
-            spanish: { name: "gato", sound: "/location" },
-            english: { name: "cat", sound: "/location" },
-            german: { name: "Katze", sound: "/location" },
-            french: { name: "chat", sound: "/location" }
-        },
-        image: "/location"
-    }
-]
+import {cards_information} from "./dataBase.js";
 
-
-const language = "spanish"
 const buttonsLanguage = document.querySelectorAll(".btn_language")
+buttonsLanguage.forEach((btnLanguage) => {
+    btnLanguage.addEventListener("click", () => {
+        console.log("El idioma que recibio fue " + btnLanguage.dataset.language)
 
-buttonsLanguage.forEach((buton)=>{
-    
+        createCards(cards_information, btnLanguage.dataset.language);
+    })
+
 })
-
 function createCards(informationArray, language) {
-
+    const cardContainer = document.querySelector(".language_cards_container")
+    cardContainer.textContent = ""
     informationArray.forEach((card) => {
         const cardItem = document.createElement("div");
         cardItem.classList.add("card")
@@ -49,27 +20,12 @@ function createCards(informationArray, language) {
                 ${card.languages[language].name}
             </h2>
             <div class="language_card_image">
-                <img src="" alt="">
+                <img src="${card.image}" alt="">
             </div>
             <button class="language_card_sound">
                 Pronunciation
             </button> 
          `
-
-
-        /* <h2 class="language_card_title">
-             hey
-         </h2>
-         <div class="language_card_image">
-             <img src="" alt="">
-         </div>
-         <button class="language_card_sound">
-             Pronounce
-         </button>*/
-
+        cardContainer.append(cardItem)
     })
-
 }
-
-
-createCards(cards_information, language);
