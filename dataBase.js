@@ -7,7 +7,7 @@ export const cards_information = [
             german: { name: "Haus", sound: "/location" },
             french: { name: "maison", sound: "/location" }
         },
-        image: "/location"
+        image: "./utils/car.webp"
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ export const cards_information = [
             german: { name: "Hund", sound: "/location" },
             french: { name: "chien", sound: "/location" }
         },
-        image: "/location"
+        image: "./utils/car.webp"
     },
     {
         id: 3,
